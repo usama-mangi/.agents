@@ -31,7 +31,7 @@ New layout: `project-backlog.json` present. Nothing to migrate.
 4. Create `docs/` if missing. Write the handoff to `docs/handoff.md` using the handoff-template. If the project has no handoff, write an empty placeholder.
 5. For each plan found, write `docs/plans/TASK-XX.md` using the plan-template. Name the file after the task's ID. In the old layout there is one plan for the current task.
 6. Validate: `project-backlog.json` parses as JSON; every plan and the handoff read as markdown with no yaml remnants.
-7. Update references: any line in `AGENTS.md` or `memory.md` pointing at `project-backlog.yaml` now points at `project-backlog.json` and `docs/`.
+7. Update references: any line in `AGENTS.md` or `memory.json` pointing at `project-backlog.yaml` now points at `project-backlog.json` and `docs/`. If a `memory.md` exists, convert its contents into the memory bank via `python3 ~/.agents/skills/dev-workflow/scripts/memory.py add --key <key> --text <fact> --cat <category>` (one entry per fact) and remove the `memory.md` file only after the import validates.
 8. Delete `project-backlog.yaml` only after validation passes.
 9. Commit: `chore(migrate): split backlog, plans, handoff into new layout`.
 10. Route to `orient`.

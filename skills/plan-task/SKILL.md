@@ -1,7 +1,7 @@
 ---
 name: plan-task
 description: >
-  Must use before implementation step. Always load orient first. Always require this skill before implement-task
+  Must use before implementation step. Session is oriented by then (orient runs once per session as gate 1). Always require this skill before implement-task
 ---
 
 **Core principle**: Implementation without a plan is random work. Plan without orientation is also random work.
@@ -15,7 +15,7 @@ description: >
 
 ## Workflow
 
-1. From project-backlog.json, find the task to plan. If the user specified one, use it. If orient suggested one, confirm with the user. Verify:
+1. The task to plan comes from the orient snapshot or the user. If you need its details, fetch only it: `python3 ~/.agents/skills/dev-workflow/scripts/backlog.py get --task <TASK-XX>`. Verify:
   - The task exists in project-backlog.json with a TASK-XX ID
   - All dependencies are closed
   - No other task is currently in progress (if there is, flag it)

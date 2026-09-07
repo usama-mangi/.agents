@@ -11,7 +11,7 @@ description: >
 1. NEVER implement without an approved plan. If no plan exists for the task, STOP and load plan-task. No exceptions.
 2. NEVER skip steps in the plan. Implement each step in order. If you think a step is unnecessary, ask the user. Do not skip silently.
 3. NEVER add steps not in the plan. If you discover the plan is incomplete, STOP. Update the plan, get re-approval, then continue.
-4. NEVER declare done without running review and security-audit skills.
+4. NEVER declare done without running the review skill. Run security-audit only when the change touches auth, authorization, secrets, or other security surface — not per task.
 5. NEVER re-read the plan file. The approved plan is already in context from plan-task.
 
 ## Workflow

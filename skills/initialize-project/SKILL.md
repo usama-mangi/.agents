@@ -22,8 +22,10 @@ description: >
 
 2. Create `AGENTS.md` file by filling the template [mission-template]('./references/mission-template.md'). AGENTS.md must be specific enough that a new agent could understand the project's purpose, quality bar, and constraints from this file alone. Must use `unslop` skill when writing `AGENTS.md`.
 
-3. Create the `docs/` structure: `docs/handoff.md` (empty placeholder) and `docs/plans/` folder.
-4. Create `project-backlog.json` as valid JSON. Seed with tasks from the interview and audit. Schema:
+3. Create the `docs/` structure: `docs/handoff.md` (empty placeholder) and `docs/plans/` folder. Create the memory bank: `python3 ~/.agents/skills/dev-workflow/scripts/memory.py init`.
+4. Create `project-backlog.json` with the shared scripts. Seed with tasks from the interview and audit:
+   `python3 ~/.agents/skills/dev-workflow/scripts/backlog.py init --name "<name>" --description "<one line>"`
+   then one `backlog.py add` per backlog task (at least 3). The store keeps this schema:
 ```json
 {
   "project": { "name": "<name>", "description": "<one line>" },

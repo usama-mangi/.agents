@@ -40,7 +40,7 @@ Run when `design.yaml` does not exist at the project root, or when a full rebuil
 4. Run the `brand-direction` sub-flow to seed the `brand` block.
 5. Build `design.yaml` per the [schema](references/design-yaml-schema.md). Tokens first, then components, then screens.
 6. Run the [slop checklist](references/slop-checklist.md) and [a11y checklist](references/a11y-checklist.md) on the initial tokens. Fix before declaring init done.
-7. Commit `design.yaml`. Update `project-backlog.json` with the init task ID and mark it closed.
+7. Commit `design.yaml`. Mark the init task closed: `python3 ~/.agents/skills/dev-workflow/scripts/backlog.py update --id <TASK-XX> --status closed`.
 
 ### Sub-flow: brand-direction
 

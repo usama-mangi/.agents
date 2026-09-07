@@ -33,10 +33,11 @@ Before using any external library/framework/API, answer these three questions:
 
 ## Workflow
 
-1. Read the `memory.md` file once. If the library, framework, or API is already documented use that information.
-2. If the required information is not in `memory.md` file, fetch official docs for the specific use case.
-3. After fetching docs, note in `memory.md`:
-  - "Verified: `ComponentProps` is the correct type in React 19 (not `Props`)"
-  - "Checked: Next.js 16 removed `next/image` legacy API, use `next/legacy/image`"
-  This prevents re-fetching the same docs and documents the verification.
-4. Docs > Personal knowledge. If docs differ from your expectations use docs.
+1. Check the project memory bank first: `python3 ~/.agents/skills/dev-workflow/scripts/memory.py get --keyword <library-or-key-topic>`. If the library, framework, or API is already documented, use that information and stop.
+2. If the required information is not in memory, fetch official docs for the specific use case.
+3. After fetching and verifying, store the fact:
+   `python3 ~/.agents/skills/dev-workflow/scripts/memory.py add --key <lib>-<topic> --text "Verified: <exact fact>" --cat library-docs`
+   This prevents re-fetching the same docs next time. Examples:
+   - `--text "Verified: ComponentProps is the correct type in React 19 (not Props)"`
+   - `--text "Checked: Next.js 16 removed next/image legacy API, use next/legacy/image"`
+4. Docs > Personal knowledge. If docs differ from your expectations, use docs.

@@ -1,34 +1,40 @@
 ---
 name: orient
 description: >
-  Must use as the first step when continuing work, assessing progress, or looking for next step. Always runs before plan-task, implement-task, or record-progress. This is the FIRST step of every dev-workflow session.
+  Must use as the first step of a new dev-workflow session when continuing work, assessing progress, or picking the next task. Runs once per session at the first task. Not for mid-session tasks: gate 1 in dev-workflow tracks that orient already ran.
 ---
 
-**Core principle**: The project must contain `AGENTS.md` and `project-backlog.json` files (and `memory.md` optionally). Handoff lives in `docs/handoff.md`, plans in `docs/plans/`. If `project-backlog.yaml` is present instead of `project-backlog.json`, the project is on the old layout: report it and route to `migrate-state`, do not read the yaml as current state. If no state files are present then route to initialize-project.
+# Orient
 
-## Critical Rules
+**Core principle**: Orient produces a session snapshot once, cheaply. Fetch only what answers "where do we stand": the active task, its plan, and relevant memory — never the whole backlog or memory store.
 
-1. NEVER leave a blind spot. On the first orient, read all state files. On later loops, read only the files that changed; unchanged files are already in context.
-2. NEVER modify files during orient. This skill READS only. If files are ambiguous, report. Do not silently fix it.
+## Rules
 
-## Workflow
+1. Runs once per session. If `AGENTS.md` is already read and the active task is already in context from a prior orient this session, do not re-run — go straight to the router.
+2. NEVER modifies files. This skill reads only. Ambiguous state is reported, not silently fixed.
+3. NEVER dump whole files. Fetch the active task and keyword-matched memory only.
+4. Re-run only after `recover` (crash) or a context compaction dropped the snapshot.
 
-1. Find the nearest ancestor directory containing `AGENTS.md` and `project-backlog.json` files. On the first orient, read all state: the backlog, `docs/handoff.md`, the current task's plan in `docs/plans/`, and `memory.md` if present. On later loops in the same session, re-read only the files changed since the last orient; the rest is already in context.
-2. Summarize to the user in this format:
+## What to read
+
+Find the nearest ancestor directory with `AGENTS.md` and `project-backlog.json`. If `project-backlog.yaml` is present instead, report it and route to `migrate-state`. If no state files exist, route to `initialize-project`. Then read, in order:
+
+1. `AGENTS.md` — purpose and quality bar.
+2. `python3 ~/.agents/skills/dev-workflow/scripts/backlog.py get --active` — project meta + the in-progress task + last closed task.
+3. The current plan `docs/plans/<active-task-id>.md` if it exists.
+4. `python3 ~/.agents/skills/dev-workflow/scripts/memory.py get --keyword <active-task-id>` — the keywords of the active task, plus any other keywords the task hints at. Read only the returned entries.
+5. `docs/handoff.md` — only if present. It is written on handoff triggers, not after every task, so it may not exist.
+6. `design.yaml` — only if present (UI projects).
+
+## Report
+
+Summarize in this compact form:
+
 ```
-## Orientation: [Project Name]
-
-**Purpose:** [from AGENTS.md, one line]
-**Phase:** [from project-backlog.json]
-**Active task:** [from project-backlog.json. "none" if no task active]
-
-**Last done:** [from project-backlog.json, docs/handoff.md and memory.md, what was delivered]
-**Gates:** [test counts, lint, build status from project-backlog.json]
-
-**Next:** [from project-backlog.json: specific task ID + title]
-**Blockers:** [project-backlog.json or "none"]
-
-Should I proceed with [TASK-ID: title] or do you have something else in mind?
+## Orientation: <name>
+Active: <TASK-XX> — <title>
+Last: <one line from the last-closed task or handoff>
+Next: <suggested task or question>
 ```
 
-Do NOT proceed to planning or implementation until the user responds.
+Then route: if the user asked to continue, propose the active task and wait; if the user asked for status only, stop after the report. Plan nothing and implement nothing until the user responds.

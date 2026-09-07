@@ -19,33 +19,28 @@ description: >
   - What does the new direction look like?
   Get a clear answer. "I don't like it" is not enough; understand the root cause.
 
-2. Review the current project-backlog.json:
+2. Review the current backlog with `python3 ~/.agents/skills/dev-workflow/scripts/backlog.py list` (one line per task):
   - Which tasks are affected?
   - Which tasks should be abandoned?
   - Which tasks should be modified?
   - What new tasks are needed?
   - Do any existing tasks' dependencies change?
 
-3. For each affected task:
-  - **Abandoned tasks:** Mark as `blocked` with reason: "Blocked: [reason]"
-  - **Modified tasks:** Update title/description to reflect new direction
-  - **New tasks:** Add with proper IDs and dependencies
+3. For each affected task, use the scripts:
+  - **Abandoned tasks:** `backlog.py update --id TASK-XX --status blocked --notes "Blocked: <reason>"`
+  - **Modified tasks:** `backlog.py update --id TASK-XX --title "<new direction>"`
+  - **New tasks:** `backlog.py add --id TASK-XX --title "<title>" --deps ...`
 
-4. Add a pivot note to project-backlog.json:
-  - Pivot: <date> - <short description>
-  - **Reason:** <why we pivoted>
-  - **Abandoned:** <task IDs>
-  - **Added:** <task IDs>
-  - **Carried over:** <task IDs that still apply>
+4. Record the pivot decision in the memory bank:
+   `python3 ~/.agents/skills/dev-workflow/scripts/memory.py add --key pivot-<date> --text "<reason, abandoned, added, carried over>" --cat decisions`
+   The reason is as important as the change; future sessions need it.
 
 5. Create plan for the new task:
   - If continuing existing work with modified approach → update `docs/plans/TASK-XX.md`
   - If starting fresh → create a new plan in `docs/plans/` via plan-task
   - If abandoning entirely → mark the plan as abandoned in `docs/plans/TASK-XX.md`
 
-6. memory.md:
-  - Record the decision and reasoning
-  - This is valuable institutional knowledge
+6. Done — the pivot decision and reasoning are recorded in memory (step 4).
 
 7. Communicate to user. Summarize:
   - What was abandoned and why

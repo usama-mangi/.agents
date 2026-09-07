@@ -14,10 +14,11 @@ description: >
 
 ## Workflow
 
-1. Read `docs/handoff.md`, this was the last recorded work. Note:
+1. If `docs/handoff.md` exists, it is the last recorded snapshot. Note:
   - What task was being worked on
   - What steps were planned
   - What was supposed to happen next
+  Handoff may be absent (it is written only on handoff triggers). Fall back to git log and `python3 ~/.agents/skills/dev-workflow/scripts/backlog.py get --active` for the task state, and `python3 ~/.agents/skills/dev-workflow/scripts/memory.py get --keyword <active-task-id>` for the last decisions.
 2. Run git log --oneline -10. This shows what was ACTUALLY committed. Compare with handoff:
   - Were commits made that handoff doesn't mention?
   - Were commits NOT made that handoff says were done?
