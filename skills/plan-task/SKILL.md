@@ -1,7 +1,7 @@
 ---
 name: plan-task
 description: >
-  Must use before implementation step. Session is oriented by then (orient runs once per session as gate 1). Always require this skill before implement-task
+  Must use before implementation step. Session is oriented by then (orient runs once per session as gate 1). Always require this skill before implement-task.
 ---
 
 **Core principle**: Implementation without a plan is random work. Plan without orientation is also random work.
@@ -16,15 +16,27 @@ description: >
 ## Workflow
 
 1. The task to plan comes from the orient snapshot or the user. If you need its details, fetch only it: `python3 ~/.agents/skills/dev-workflow/scripts/backlog.py get --task <TASK-XX>`. Verify:
-  - The task exists in project-backlog.json with a TASK-XX ID
-  - All dependencies are closed
-  - No other task is currently in progress (if there is, flag it)
+   - The task exists in project-backlog.json with a TASK-XX ID
+   - All dependencies are closed
+   - No other task is currently in progress (if there is, flag it)
 
 2. Read relevant context:
-  - AGENTS.md to understand the context
-  - Related existing code: patterns, conventions, error handling
-  - Any task the new task depends on (to understand integration points)
+   - AGENTS.md to understand the context
+   - Related existing code: patterns, conventions, error handling
+   - Any task the new task depends on (to understand integration points)
 
 3. Create the plan in `docs/plans/TASK-XX.md` using the template [plan-template](./references/plan-template.md)
 
 4. Mark the task as in progress, present the plan once, and await approval. Show the full plan to the user. Ask: "Is this plan approved, or should I revise it?" Do NOT proceed to implement-task until the user explicitly approves. The approved plan stays in context; implement-task does not re-read the file.
+
+## Refactor Planning
+
+When the task is a refactor, the plan must include:
+
+- **Current state:** what the code looks like now
+- **Target state:** what it should look like after
+- **Steps:** small, ordered changes (each independently committable)
+- **Risk:** which steps might break things
+- **Prerequisite:** confirm tests exist and pass before starting
+
+Do NOT plan refactors as one big change. Break into steps where each can be committed independently and verified with tests.

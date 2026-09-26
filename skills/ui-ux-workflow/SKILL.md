@@ -20,10 +20,14 @@ description: >
 9. Read [references/hci-foundations.md](./references/hci-foundations.md) before designing or evaluating a surface.
 10. Read [references/design-process.md](./references/design-process.md) before running a design project, evaluating a screen, or breaking a creative block.
 11. Read [references/design-system.md](./references/design-system.md) before initializing or auditing a design system.
+12. New UI, or remediation of existing (especially AI-generated) UI → load `design-intent` alongside this skill. Nothing is generated before its intent phases are green: audience block (A1), named style direction from a sealed rollout (A2), motion personality (A3). This skill's four gates check the *output*; `design-intent` forces the *decisions* that make the output non-default.
+13. `design-intent` owns the `intent:` block of `design.yaml` (audience, style, motion, delivery). This skill owns the rest. Read the intent block on orient; never write it.
+14. Mechanical support lives in `design-intent/scripts/intent.py`: `scan` (slop tells + intent coverage), `gates` (exit 1 on any intent-gate fail), `merge` (deep-merge decisions into `intent:`).
 
 ## Gates
 
 - **Knowledge-grounded.** For surface work, the [HCI foundations](./references/hci-foundations.md) are applied. For design process work, [design-process.md](./references/design-process.md) is applied. For design-system work, [design-system.md](./references/design-system.md) is applied. No rule here is invented; every rule traces back to one of those three files.
+- **Intent-checked.** For new UI or UI remediation, the four intent gates from `design-intent` (audience, style, motion, delivery) pass before this skill's four output gates run — `python3 ~/.agents/skills/design-intent/scripts/intent.py gates` exits 0. A screen can pass slop/a11y/system checks and still be generic: the intent gates are what prevent that.
 - **Slop-checked.** Every screen and component passes the [slop checklist](./references/slop-checklist.md). Any match is a violation. Fix before ship.
 - **A11y-checked.** Every screen and component passes the [a11y checklist](./references/a11y-checklist.md). Any violation fails the gate.
 - **System-checked.** Tokens, components, and the eight good-vs-bad factors pass via the design-system phases in [design-system.md](./references/design-system.md). No raw colour values, no 3px nudges, no component that consumes a primitive token directly.

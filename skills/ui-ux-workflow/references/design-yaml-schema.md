@@ -59,13 +59,41 @@ screens:
     slop_scan: clean|mild|heavy     # heavy blocks ship
     hci_scan: pass|fail
 
-current_task:
-  id: TASK-XX
-  title: <title>
-  plan_approved: true|false
-  gates_passed: [<gate numbers>]
-
 log:
   last_updated: <ISO date>
   recent_changes: [<list of design decisions with rationale>]
+```
+
+## The `intent:` block (owned by design-intent)
+
+`design-intent` owns this block; `ui-ux-workflow` reads it on orient and never writes it. It is
+merged mechanically: `python3 ~/.agents/skills/design-intent/scripts/intent.py merge --payload
+<payload.json>` deep-merges a JSON payload into this block only, byte-preserving the rest of the
+file. Gate evaluation: `intent.py gates` exits 1 while any field below is missing, reads as the
+default ("clean modern minimal"), or results are not all-pass.
+
+```yaml
+intent:
+  audience:                      # the persona gate — must exist BEFORE any copy
+    identity: <role, company type, seniority, one line>
+    pains: [<3-5 phrases in the persona's own words>]
+    objections: [<top 3 reasons they don't buy>]
+    say: [<native phrases they use>]
+    never_say: [<words they'd never use>]
+    triggers: [<events that make them look for a solution>]
+    proof_formats: [<evidence types their role trusts>]
+    operator_vs_prosperer: <who operates vs who prospers, one line each>
+  style:
+    direction: <one-sentence system name; "clean modern minimal" fails the gate>
+    rubric: { <candidate>: <total score>, ... }   # sealed-rollout scores incl. runners-up
+    rejected: [<one-line reasons each runner-up lost>]
+  motion:
+    personality: playful|productive|editorial|technical
+    signature: <the one L3+ signature motion on brand surfaces, one line>
+  delivery:
+    gates_run: <ISO date>
+    results: { audience: pass|fail, style: pass|fail, motion: pass|fail, delivery: pass|fail }
+    exceptions: [<criterion-cited exceptions, e.g. "reduced-motion fallback only on hero —
+                 internal dashboard; compensating control: static opacity swap">
+                ]
 ```
