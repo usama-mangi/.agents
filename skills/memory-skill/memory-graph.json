@@ -1,0 +1,914 @@
+{
+  "version": 1,
+  "entities": {
+    "Resume Generation": {
+      "entityType": "Career",
+      "observations": [
+        {
+          "text": "A 2026 resume must clear two sequential filters: (1) the ATS/parser that reads structure and ranks keywords, (2) a human recruiter who spends 6-10 seconds on the first scan (source: simplify-ats-2026).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "ATS scoring weight model (cvtailor): keywords = 40 pts, skills alignment = 20, experience relevance = 20, presentation = 10, qualifications = 10 - so keywords + skills are ~60% of machine score.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "The '75% of resumes are auto-rejected by ATS' claim is a myth traced to a 2012 sales pitch with no methodology; the real killer is volume + low ranking - being 150th of 180 equals a rejection (Workday processed 173M applications in H1 2024, +31% YoY, while openings grew only 7%).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "ATS hard formatting requirements: single column, standard section headings, contact info in body not header/footer, no tables/text boxes/images/icons/skill bars, .docx safest format, standard fonts 10-12pt, consistent MMM YYYY dates (sources: simplify-ats-2026, indeed-ats, forgemycv).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Self-test for ATS safety: select all, copy, paste into plain text; if order jumbles or chunks vanish, the parser sees the same damage.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Resume formats: reverse-chronological is the ~90% default; functional format scores 40-55 vs 65-75 on ATS tests (a red flag); combination/hybrid suits career changers (sources: atsfixer, resumatic).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Resume length: one page under 10 years experience; two pages defensible for senior (ResumeGo: 2.6-2.9x more callbacks for two pages at mid/senior level).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "AI is default tooling (46-58% of job seekers use it) but unedited AI output is caught by recruiters ~83% of the time via pattern tells, even though ATS cannot detect it (atsverification.com, tested 2026).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "The winning 2026 workflow is human-writes, AI-edits, human-edits-back, with every claim defensible in a 60-second interview answer (NBER+MIT study: structured AI-assisted workflows lifted hires and wages ~8%).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Quantification pays: in a 10,000-resume ATS analysis, the 60% of resumes with quantified bullets gained +31 points (resumebold); categories and formulas from writecv, imvivid (STAR-to-Number), resumegeni (scope/constraint fallback when no metric exists).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Recruiter scan order on the human pass: current title, recent relevant employer, named tools, at least one proof metric; writing quality matters on the second pass when they decide whether to call (hireflow-ai).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Open questions: per-vendor ATS scoring weights are not universal; LaTeX-to-PDF parse reliability on Greenhouse/Workday is unverified for this vault's pipeline (actionable: run a current resume through a real ATS scanner); whether AI-adjacent keywords are a durable trend; whether JD-mirroring conflicts with the 'perfect match is a red flag' finding (Fortune, 2026-08).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Researched 2026-08-31; full notes in knowledge/resume-generation.md.",
+          "updated": "2026-08-31T00:00:00+00:00"
+        }
+      ],
+      "updated": "2026-08-31T00:00:00+00:00"
+    },
+    "Tech Job Market": {
+      "entityType": "Career",
+      "observations": [
+        {
+          "text": "As of Aug 2026, overall US job postings sit at 101.8 on Indeed's Job Postings Index (JPI, Feb 2020 = 100), 1.8% above baseline - but software development postings index at 74.4, ~26% below pre-pandemic (Indeed Hiring Lab, Aug 24, 2026 snapshot).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Software postings bottomed at 61.1 in May 2025 and have rebounded ~22% off the floor; direction improving, level still weak.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Labor market runs low-hire low-fire since 2024: JOLTS hiring rate 3.4%, quits 2.0%, layoffs 1.1% (June 2026) - openings are scarce even when nobody is losing jobs.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Pay: software developer/QA median $134,040 (BLS, May 2025); computer/math group median $109,470 with ~280k openings/yr projected 2025-2035, above the 3% all-occupation average. Posted wages +2.5% YoY but real wages fell 0.4% in Q2 2026 - not a seller's market.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Demand is barbell-shaped: senior engineers who can architect and verify AI-assisted code at one end, cheap junior/offshore labor at the other; the mid-level generalist lane has thinned (AI raised output per engineer).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Tech layoffs continue at normalized volumes (layoffs.fyi); the story is reallocation, not collapse - generalist/middle layers cut while AI-related functions hire.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Practical implications: referrals and visible shipped work beat cold applications; non-tech industries (finance, healthcare, logistics, defense) hire more steadily; AI capability signal now assumed; negotiate on role scope/level rather than salary; juniors enter via adjacent roles (QA automation, support eng, data pipelines).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Open questions: whether the rebound off the May 2025 floor continues; salary benchmarks by level/region not yet researched; region-specific data not gathered.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Researched 2026-08-31; sources: Indeed Hiring Lab Aug 2026, BLS OOH updated 2026-08-27, layoffs.fyi; notes in knowledge/tech-job-market.md.",
+          "updated": "2026-08-31T00:00:00+00:00"
+        }
+      ],
+      "updated": "2026-08-31T00:00:00+00:00"
+    },
+    "Job Search Strategy": {
+      "entityType": "Career",
+      "observations": [
+        {
+          "text": "A job search is a conversion funnel (applications, screens, interviews, offers); adding a new channel beats optimizing an existing stage - most candidates run only cold applications then blame the market.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Channel asymmetry: referred candidates are a small share of applicants but a large share of hires (commonly cited: referrals fill ~30-40% of hires from under 10% of applicants; figures flagged order-of-magnitude because primary sources refused fetch - direction is uncontested).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Signal scarcity: with software postings ~26% below pre-pandemic, employers filter on hard-to-fake signals (shipped work, referrals, verifiable metrics); AI-generated volume (keyword-stuffed resumes, 200 cold applications) converts at near zero.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Ranked tactics by expected value for an early-career Lahore full-stack AI engineer: (1) fix the profile first - broken GitHub links, 'and more' ATS artifacts, student-coded headline; (2) referral pipeline over cold volume, 3-5 companies/week with specific engagement; (3) two-sided targeting - AI-native startups + non-tech enterprises, skip big-tech new-grad funnels; (4) lead with the verifiable Hono-vs-Express benchmark (8.2x throughput, 53x latency); (5) demonstrate verification skill (AI Code Review Bot, live debugging narratives); (6) run the job-application-pipeline skill per JD; (7) log channel-level response rates weekly, cut the worst channel after 40-50 applications.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Regional note (Lahore/Pakistan): local startups and dev shops hire continuously with lower pay but fast experience compounding; EU-overlap remote is the selling point for international; Gulf (Dubai/Riyadh) hiring is active and values the exact stack (Stripe, React Native, AI integrations).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Open questions: verified referral conversion statistics; which specific Gulf/EU companies hire from Pakistan; EU time-zone flexibility asked, unanswered.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Researched 2026-08-31; notes in knowledge/job-search-strategy.md.",
+          "updated": "2026-08-31T00:00:00+00:00"
+        }
+      ],
+      "updated": "2026-08-31T00:00:00+00:00"
+    },
+    "Job Leads Pakistan": {
+      "entityType": "Career",
+      "observations": [
+        {
+          "text": "Live LinkedIn search results (Aug 31, 2026) for Lahore/Karachi: 300+ full-stack results, demand skews senior (best AI/full-stack matches wanted 4-6+ years), heavy Easy Apply.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Tier 1 lead: Hamza Bin Yousuf (CHRP), recruiter who posted the Systems Limited AI Engineer role, score 17/22 - ask about graduate tracks rather than the 5+ yr GCP role.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Tier 2 leads: Sadia Saif (BD at Xorora, score ~15; Xorora is a 2-10 person AI agency serving US clients, best stack match found), Minaal Khurram (SWE at Careem, FAST 2025, referral-advice value), Maham Basit (SWE at Conrad Labs, FAST 2024, hires juniors in Lahore).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Tier 3: Khadija Adnan (i2c payments/fintech, steady graduate hiring), Quirky Bit (Lahore on-site full-stack), vFairs (AI Engineer JD with LangGraph/MCP/FastAPI is a free skills roadmap despite 6+ yrs bar).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Market signals: remote-for-US roles quote $50-100/hr (Crossing Hurdles); local on-site roles don't post ranges; 'Remittance Salary' (pay pegged to foreign-currency benchmark) is a real thing in Pakistan mobile dev.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Method note: linkedin__search_people ignores the location facet for recruiter keyword searches (returns US recruiters); local contacts came from job posters and company pages.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Drafted connection notes for Hamza and Sadia, to be sent manually after confirmation; notes in knowledge/job-leads-pakistan.md.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        }
+      ],
+      "updated": "2026-09-09T09:49:29.588241+00:00"
+    },
+    "Target Companies Pakistan": {
+      "entityType": "Career",
+      "observations": [
+        {
+          "text": "A/B/watchlist company list built Sep 1, 2026 under confirmed constraints (PKR 80,000/month floor, on-site Karachi/Lahore or remote, US-hours overlap OK, full-stack TS/React/Node/NestJS with AI integration).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "A-list: TechOn Ventures (MERN, Karachi DHA on-site, 1+ yr MERN, only 4 applicants when found, founder Muhammad Hunain posted it), Ovrlod (React Native, JD makes AI coding tools Copilot/Cursor/Claude a hard requirement), Xorora (stretch, warm contact via Sadia Saif), Careem Software Engineer I (only explicitly junior SWE posting found), Quik Hire Staffing (multiple remote-PK roles, one profile).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "B-list: Sovenson Limited (100% remote contract, no years asked, building HR app from zero), SME Careers, Quirky Bit, Taraki (Forward Deployed Engineer, remote), Plutus21 (AI Systems Engineer), Hollow Point (Agentic Software Engineer), Deel (Backend Node.js + AWS, Pakistan remote), Contour Software (SDET Trainee, foot in the door, tailored resume already exists).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Watchlist (too senior today, JD = roadmap): vFairs (LangGraph, MCP, FastAPI), Systems Limited (GCP Vertex AI - contact Hamza for graduate tracks), Dubizzle Labs, NorthBay Solutions, Ericsson Lahore (continuous junior hirers - set job alerts).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "JD keyword corpus from 6 detailed JDs, frequency-ranked: TypeScript/JavaScript and React and Node.js and REST API design and PostgreSQL/MongoDB (5 of 6 each), Docker + CI/CD GitHub Actions (4), LLM integration OpenAI/Anthropic/RAG/vector DBs (4), Git workflow/PRs/code review (5), React Native/Expo (2), AI coding assistants (2 and rising - Ovrlod made it a hard requirement), AWS (3), testing Jest (3), agent orchestration LangChain/LangGraph/MCP (2, premium roles).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Resume implication: keyword tiers should lead with TypeScript/React/Node/REST/PostgreSQL/MongoDB/Docker/GitHub Actions and include an explicit 'AI-assisted development' line naming Copilot, Cursor, and Claude Code.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Open gaps: GitHub link audit done but 5 project links still unverified (tradios_project, Matasha-app, hypno-switch-app, AI Resume Analyzer, portfolio); notes in knowledge/target-companies-pakistan.md.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        }
+      ],
+      "updated": "2026-09-09T09:49:29.588241+00:00"
+    },
+    "Agentic Development Lifecycle": {
+      "entityType": "ML/AI",
+      "observations": [
+        {
+          "text": "The ADLC is a structured methodology for building systems where autonomous AI agents are core components - designed for probabilistic, non-deterministic systems whose behavior depends on prompts, context windows, model versions, and external tool calls, unlike deterministic SDLC.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Human role shifts from code producer to orchestrator/reviewer/director; success metric shifts from binary pass/fail to behavioral quality, goal completion rate, and alignment.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Canonical stages: Phase 0 Preparation & Hypotheses (capability matrix: agentic vs deterministic), Phase 1 Intent Specification (specs say what and why, not how; spec-driven tools like GitHub Spec Kit), Phase 2 Architecture & Scaffolding (orchestration pattern choice, ADRs as constraints), Phase 3 Development & Inner Loop (Explore-Plan-Code-Verify-Commit, enforced TDD, context engineering, subagent-driven development), Phase 4 Behavioral Testing & Validation (golden trajectories, LLM-as-Judge), plus deployment/operations/continuous-learning phases - deployment is the START of the lifecycle, not the end.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Prompts, tool manifests, memory schemas, and evaluation datasets are version-controlled first-class artifacts (Infrastructure-as-Code); feedback loop is continuous rather than periodic.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Evaluation-Driven Development (EDD) is to ADLC what TDD was to Agile; the cognitive control loop is Perception-Reasoning-Action-Observation repeating, and development manages variance rather than fixing bugs.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Analogies: orchestrator as conductor of an orchestra; human as senior engineer/tech lead; harness/scaffold as the operating system agents run on.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Open questions: ROI measurement vs traditional development; minimum viable governance for 2-3 dev teams; stateful long-running agents; subagent decomposition granularity; prompt versioning without breaking behavior.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Researched 2026-08-30; sources: Keyhole Software, AEEF Standards, Netguru, Microsoft Tech Community, Veso Research, IBM, Deloitte, CodeBridge, EPAM, arXiv; notes in knowledge/agentic-development-lifecycle.md.",
+          "updated": "2026-08-30T00:00:00+00:00"
+        }
+      ],
+      "updated": "2026-08-30T00:00:00+00:00"
+    },
+    "Automating Agentic Lifecycle": {
+      "entityType": "ML/AI",
+      "observations": [
+        {
+          "text": "Practical blueprint for automating the full ADLC with AI agents: five interlocking layers - Context Engineering, State Management, Structured Workflows, Drift Prevention, Startup Protocol.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Context Engineering layer: three-layer rule architecture (root rules, area-scoped rules, workflow rules) with path-scoped frontmatter; key insight: goals outside the context window beat goals inside it.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "State Management layer: project-state.yaml, PROJECT_STATUS.md, ROADMAP.md, session handoff files, bootstrap sequence ('let's get rolling').",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Drift Prevention layer: goal externalization via MISSION.md, enforcement tiers (guideline, rule, gate), circuit breakers with 5 triggers, capability matrix, named anti-patterns.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Evidence: hand-written AGENTS.md outperforms LLM-generated by 4% success rate and 35-55% fewer bugs.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Researched 2026-08-30; notes in knowledge/automating-agentic-lifecycle.md; implemented concretely in the Agentic Workflow System (~/.agents/).",
+          "updated": "2026-08-30T00:00:00+00:00"
+        }
+      ],
+      "updated": "2026-08-30T00:00:00+00:00"
+    },
+    "Job Application Pipeline": {
+      "entityType": "Agent Skills",
+      "observations": [
+        {
+          "text": "Merged, authoritative skill for the full JD-to-interview loop at .agents/skills/job-application-pipeline/SKILL.md.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Given a job description it produces: (1) a tailored ATS-safe resume PDF (LaTeX, CAR bullets, keyword tiers, 1-2 pages by seniority), (2) a 3-variant interview intro built from the SAME approved bullets/metrics, (3) a practice-question set - then runs a mandatory consistency audit (resume vs intro vs LinkedIn) and red-flag sweep.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Red flags it actively avoids: ATS parse failures, the 9 AI-era failure modes (synergy stacker, scope inflator, metric ghost, AI-slop pattern matcher...), 83% recruiter AI-tell detection, keyword-stuffing density penalties, unbackable claims, cross-surface inconsistency, the 'perfect match is a red flag' finding, functional-format and 1.25-page traps.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Created by merging generating-tech-resumes + interview-intro + the research in Resume Generation; both parent skills point to it and defer on conflicts.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "References: pipeline-map.md, red-flags-audit.md, bullet-engine.md, format-and-length.md, intro-frameworks.md, practice-questions.md, action-verbs.md, bullet-bank.md, assets/resume-template.tex.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        }
+      ],
+      "updated": "2026-09-09T09:49:29.588241+00:00"
+    },
+    "Generating Tech Resumes": {
+      "entityType": "Agent Skills",
+      "observations": [
+        {
+          "text": "Operative resume generator skill (.agents/skills/generating-tech-resumes/SKILL.md): one-page ATS-optimized PDF via LaTeX with two quality gates (machine-readable + human-persuasive), CAR formula on every bullet, 9 AI-era failure modes filter, pdflatex pipeline.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Requires a job description; reads profile.md + project-description/main.md as data sources.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Now superseded by Job Application Pipeline (parent skill, defers on conflicts).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        }
+      ],
+      "updated": "2026-09-09T09:49:29.588241+00:00"
+    },
+    "Interview Intro": {
+      "entityType": "Agent Skills",
+      "observations": [
+        {
+          "text": "Skill (.agents/skills/interview-intro/SKILL.md) that prepares and refines 'Tell me about yourself' introductions from profile.md + project-description/main.md.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "The oral counterpart of the resume; its rehearsal guarantees claims survive the 60-second defense, closing the consistency loop with the resume.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Now superseded by Job Application Pipeline (parent skill, defers on conflicts).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        }
+      ],
+      "updated": "2026-09-09T09:49:29.588241+00:00"
+    },
+    "Job Search Pipeline": {
+      "entityType": "Agent Skills",
+      "observations": [
+        {
+          "text": "Job-search automation skills at .agents/skills/hunting-tech-jobs/ and .agents/skills/linkedin-job-leads/: LinkedIn jobs/leads search, JD analysis, resume tailoring per role, outreach, application tracking.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Consumes resume + intro skills downstream; shares the JD keyword method with Resume Generation.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "linkedin-job-leads was dropped by the user on 2026-09-01 as stale after the gap analysis.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        }
+      ],
+      "updated": "2026-09-09T09:49:29.588241+00:00"
+    },
+    "Agentic Workflow System": {
+      "entityType": "Agent Skills",
+      "observations": [
+        {
+          "text": "Complete agentic workflow system implemented under ~/.agents/ (2026-08-30) for cross-tool agent automation.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Structure: root AGENTS.md with universal rules + CLAUDE.md importing it; 2 orchestrator skills (dev-workflow 'let's get rolling', debug-workflow); 8 reusable component skills (orient, plan-task, implement-task, verify-task, commit-changes, handoff, debug-issue) each with references/ subdirectories; state-file templates in ~/.agents/state-files/.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Architecture: orchestrator skills call component skills in sequence; component skills are reusable across workflows; detailed knowledge loads only when needed.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Enforces: no code without a plan, test-first, one task per session, dependency order, conventional commits with rationale, state persistence across sessions.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "This is the concrete implementation of the Automating Agentic Lifecycle research.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        }
+      ],
+      "updated": "2026-09-09T09:49:29.588241+00:00"
+    },
+    "Vault Operations": {
+      "entityType": "LLM Interaction",
+      "observations": [
+        {
+          "text": "Memory architecture (2026-09-02): primary store is now the native knowledge graph at ~/.agents/skills/memory-skill/memory-graph.json managed by graph.py (@modelcontextprotocol/server-memory was used earlier); the markdown vault (memory.md + knowledge/) is the human-readable mirror; every write goes to both, every read starts with the graph.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "LinkedIn MCP for Cline CLI configured 2026-08-31 via mcp-server-linkedin; fixed a startup crash by pinning fastmcp<4 (fastmcp 4.0.0 removed the exclude_args argument FastMCP.tool() used).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Profile source of truth: profile.md synced to live LinkedIn 2026-09-01 (~18 months experience adopted, recommended headline written).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Job-hunt readiness gaps recorded 2026-09-01 as Open Question 0, blocking order: constraints (done) -> profile sync (done) -> reference-resume mining -> salary benchmarks -> company list/keyword corpus (done) -> application tracking log; local interview-format intel gathered alongside referral outreach.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Vault assets audit 2026-09-01: 25 tailored resumes in resumes/, deep project catalog in project-description/, 5 reference resumes in systems-limited/ not yet analyzed for local conventions, stale job-leads/ folder.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        }
+      ],
+      "updated": "2026-09-09T09:18:48.308068+00:00"
+    },
+    "Islam Nabi Personal Brand": {
+      "entityType": "Career",
+      "observations": [
+        {
+          "text": "Portfolio at islamnabi.com, fully server-rendered (279 KB HTML, every section crawlable); AI/ML Engineer, Lahore, at Mayfair Tech FZ-LLC as AI Product Engineer; Sukkur IBA University BS CS (same university as Usama Mangi).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Positioning formula: niche-first specialty (Agentic AI, RAG, LLM systems) plus the phrase 'production-grade' repeated as a drumbeat across every section - sells maturity/reliability, not potential.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Hero sells three things in one line: role, capability claim ('Building Production-Grade AI Systems'), and dual CTAs (Download Resume + Contact Me) above the fold.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Metric-anchored case studies as selling engine: '95%-accurate RAG system over 7,500 FBR tariff codes', 'curated 100+ hours of Urdu speech data', '8-step classification engine'; the technical writing section doubles as proof-of-work ('Read case study' links).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Services section packages skills as client-facing offers (AI/ML Engineering, Chatbot Development, AI Product Engineering) plus a contact form with purpose dropdown (Collaboration / Hiring / AI Consulting) and a 24-hour-reply promise - agency-style funnel.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Themed as terminal/CLI aesthetic ('experience.log', 'agent_demo.sh', INFO role.start entries) - signals engineering credibility through design metaphor.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Proof stack: 14+ certifications with Verify links, HackerRank/LeetCode/GitHub/WhatsApp links, mission line ('Engineering intelligence that empowers humanity') plus John McCarthy epigraph for gravitas.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Weaknesses: every entry reads 'building X, building Y' - few named client outcomes or live demo links; some copy is keyword-listy; timeline has odd date ordering (Revelo listed after a later-dated role); no testimonials/social proof; resume and demos unverifiable.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Researched 2026-09-02 via direct fetch of islamnabi.com.",
+          "updated": "2026-09-02T00:00:00+00:00"
+        }
+      ],
+      "updated": "2026-09-02T00:00:00+00:00"
+    },
+    "Usama Mangi Portfolio Audit": {
+      "entityType": "Career",
+      "observations": [
+        {
+          "text": "usama-mangi.tech is a client-rendered 3D/SPA portfolio: server returns only a 4.2 KB shell whose only crawlable text is the title tag - bio, projects, skills and CTAs are invisible to non-JS crawlers and most link-preview scrapers (audited 2026-09-02). Title tag itself is well-keyworded: Full Stack Developer & AI Engineer | React, Node.js, TypeScript.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "The GitHub profile (github.com/usama-mangi) currently carries the personal brand instead: README opens 'I do not just write code; I engineer resilient ecosystems', builds a philosophy persona (Chomsky-influenced root-cause critique, Harari-influenced 'data narrative', 'toolsmithing' via custom Neovim/Lua dotfiles).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Strong GitHub proof-of-work: 47 public repos; pinned Eco Restoration AI (Stable Diffusion + DeepLabV3+), Solar Segmentation (SSL, research-grade), Hono vs Express benchmark (echoes published 8.2x throughput / 53x lower latency paper), Interviewer AI (Gemini), dotfiles.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "GitHub setup gaps: no stats/badges in profile README, low stars (most repos 0-3), 19 followers - social proof is thin; identity copy says 'MERN Stack developer... Freelance' while the portfolio title says 'Full Stack Developer & AI Engineer'.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Cross-surface inconsistency risk (flagged in Job Application Pipeline too): GitHub = MERN freelancer, portfolio = full-stack + AI engineer, LinkedIn headline still '2026 Grad | Open to SWE Roles' while profile.md recommends the AI-engineer headline - surfaces tell different stories.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "What is working: title tag is well-keyworded; Hono-vs-Express benchmark is a genuine differentiator; philosophical README voice is memorable; project selection (AI + research + benchmarking) matches the target AI-engineer narrative.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "What is broken: no crawlable site content at all (fatal for a portfolio whose entire job is to be found and read), no metrics/outcomes surfaced on entry surfaces, no case-study writing, no services/CTA funnel, no testimonials, no resume CTA without JS.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Priority fixes ranked: (1) prerender/SSG the portfolio so every section exists in HTML (Astro or Next static export), (2) port Islam Nabi's pattern - metric-anchored case studies (92% resume-analyzer accuracy, 8.2x benchmark) as flagship content, (3) unify one positioning line across portfolio/LinkedIn/GitHub, (4) add services/hire CTA + contact form with reply-time promise, (5) strengthen GitHub profile (stats, pinned ordering, repo READMEs with outcomes).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        }
+      ],
+      "updated": "2026-09-09T09:49:29.588241+00:00"
+    },
+    "Portfolio Personal-Branding Patterns": {
+      "entityType": "Career",
+      "observations": [
+        {
+          "text": "Playbook extracted from comparing islamnabi.com vs usama-mangi.tech (2026-09-02) - seven selling elements a personal portfolio needs: (1) above-the-fold positioning line + dual CTA, (2) metric-anchored case studies (number + scope + method), (3) proof-of-work writing section, (4) services packaging for clients, (5) contact funnel with response promise, (6) verifiable credentials, (7) consistent theme/design metaphor.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Core principle: a portfolio must work with JavaScript disabled - if a crawler or link-preview can only see the title tag, the portfolio does not exist (Islam Nabi: 279 KB prerendered; Usama: 4 KB shell).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Selling voice pattern that works: claim + evidence pair in every sentence ('95%-accurate RAG over 7,500 FBR codes') - verbs like built/shipped/delivered/curated; avoid future/potential framing.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Design-metaphor branding (terminal/CLI theme, 'experience.log') differentiates at zero content cost; Usama already has an equivalent ('ssh usama@systems-architect' in GitHub README) but only uses it on GitHub.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Social proof is the shared weak spot of both portfolios: neither has testimonials, client logos, or live-demo links; this is the open differentiation opportunity.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Selling-oneself mentality observed in Islam Nabi: sell the outcome ('production-grade'), package skills as services, close with a promise (reply within 24 hours), stack verifiable proof (certificates with verify links), and turn writing into a sales channel (case studies that end in 'Read case study').",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        }
+      ],
+      "updated": "2026-09-09T09:49:29.588241+00:00"
+    },
+    "Muhammad Shahzeb Personal Brand": {
+      "entityType": "Career",
+      "observations": [
+        {
+          "text": "Portfolio at shahzebx.dev (Next.js + Tailwind, Vercel); Muhammad Shahzeb, 'Full-Stack Developer & Computer Vision Engineer', Asia/Karachi; Sukkur IBA University - third portfolio in the comparison set from the same university as Usama Mangi and Islam Nabi (audited 2026-09-02).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Site is mostly client-rendered: visible HTML is only nav/footer, but Next.js RSC payload (__next_f) embeds most content in the HTML, so Google can index it - better than Usama's 4 KB empty shell, worse than Islam Nabi's clean prerender. Has JSON-LD ProfilePage schema and a dynamic OG-image API (/api/og/generate) - genuine SEO touches neither competitor has.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Homepage keywords/meta are strong: 'Full Stack Developer, Computer Vision Engineer, Machine Learning, PyTorch, Next.js, React, Node.js, Self-Supervised Learning, Deep Learning'.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Project framing uses tagline-style differentiators instead of metrics: 'Intranet-ready MERN - permissions-aware workflows', 'Self-supervised satellite segmentation - BYOL after MoCo/SimCLR instability', 'Colorization + low-light enhancement - Zero-DCE to MIRNet-style pivot' - shows engineering taste and honesty about iteration, but zero numbers anywhere (no accuracy %, no throughput, no user counts).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Projects: Case Management System (MERN, built for a government institution via Interns-PNA - the only real-client project in the three-way comparison), AI Image Enhancement (PyTorch inference-first), Movies App (TMDB + JWT + MongoDB), Solar Panel Segmentation FYP (BYOL/MoCo - same FYP domain as Usama's Solar Segmentation).",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Experience section is a weakness: AI Community of Pakistan Campus Co-Lead (leadership, good), but also 'Hostel Coordinator' at Sukkur IBA and a National Assembly internship described as generic operational work - dilutes the engineer narrative.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "GitHub (ShahzebX): 19 repos, 3 followers, README is cleanly structured (About Me bullets, Featured Projects with descriptions and links, Tech Stack, GitHub Stats) and bio says 'Open to Remote & Freelance Projects' - the most 'hire-ready' signal of the three, but smallest footprint and lowest social proof.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "CTA/funnel is thin: only 'Have a project or question? Get in touch.' - no services section, no resume download, no reply-time promise, no form; no blog/case-study writing; no testimonials.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        },
+        {
+          "text": "Three-way verdict: Shahzeb = best real-world proof (government client project) + best technical SEO, weakest metrics and funnel; Islam Nabi = best conversion machine, weakest verifiable demos; Usama = deepest project substance + strongest published benchmark, worst site delivery and inconsistent cross-surface story.",
+          "updated": "2026-09-09T09:49:29.588241+00:00"
+        }
+      ],
+      "updated": "2026-09-09T09:49:29.588241+00:00"
+    },
+    "System Design Process": {
+      "entityType": "Mathematics",
+      "observations": [
+        {
+          "text": "The system design process is a structured, iterative methodology for transforming a problem statement into a defensible system architecture. It involves 7 core stages with explicit decision points, each requiring trade-off analysis and rationale documentation. The process is recursive—later stages often force revisiting earlier decisions as constraints sharpen.",
+          "updated": "2026-09-12T04:19:37.411629+00:00",
+          "source": "Synthesis: Foundry framework, NASA SEH 4.0, Viet Bui system design process, System Design Space, SEBoK Generic Life Cycle Model",
+          "confidence": "high"
+        },
+        {
+          "text": "STAGE 1: REQUIREMENTS CLARIFICATION / FOUNDATION. Purpose: Define what the system must do and its constraints before any architecture work. Decision Points: (1) Functional scope - who uses it, core use cases, inputs/outputs. (2) Non-functional requirements - scale (QPS, users), latency (p99 targets), availability (99.9% vs 99.99%), consistency (stale reads tolerance), durability, data volume, read/write ratio. (3) Constraints - runtime/language, regulatory, team expertise, budget. (4) Security - data classification, access model, encryption, auditability. (5) Capacity targets - requests/sec, payload sizes, storage growth, retention. Rationale: Most downstream rework comes from missing clarity at this stage. Ambiguous requirements produce the wrong architecture. Intent must be falsifiable—if it can't be tested after launch, it's a slogan.",
+          "updated": "2026-09-12T04:19:44.459141+00:00",
+          "source": "Foundry methodology, Viet Bui process, NASA SEH 4.0",
+          "confidence": "high"
+        },
+        {
+          "text": "STAGE 2: CAPACITY ESTIMATION. Purpose: Back-of-the-envelope calculations to bound the design space and determine which architectures are viable. Decision Points: (1) QPS estimation - DAU × actions/day ÷ 86400, peak = avg × 2-10. (2) Storage estimation - records/day × record size × retention. (3) Bandwidth estimation - QPS × response size. (4) Latency budget - available latency determines number of hops possible (e.g., 5 DB reads at 20ms each = 100ms minimum). Rationale: These numbers constrain which designs are viable. Without capacity envelope, there's no credible load strategy. Without load strategy, no credible reliability claim. Skipping this leads to wrong database/caching choices.",
+          "updated": "2026-09-12T04:19:50.922211+00:00",
+          "source": "Viet Bui system design process, System Design Space",
+          "confidence": "high"
+        },
+        {
+          "text": "STAGE 3: HIGH-LEVEL COMPONENT DECOMPOSITION. Purpose: Sketch major components and their interactions before designing any one in detail. Decision Points: (1) Service boundaries - cohesive chunk of logic owning specific invariants and data. (2) Component identification - client layer, load balancer, app servers, caching, datastore, message queue, CDN, background workers. (3) Single point of failure identification - every design has one; acknowledge it. (4) Failure-first design - which component fails most often? Design for that first. Heuristics: one box per bounded responsibility, draw data flow not just components, identify SPOF in first sketch. Rationale: Service boundaries are how you scale both engineering and reliability. Without clear boundaries, every change becomes a cross-service guessing game.",
+          "updated": "2026-09-12T04:19:53.422176+00:00",
+          "source": "Viet Bui, System Design Space, Foundry",
+          "confidence": "high"
+        },
+        {
+          "text": "STAGE 4: DATA FLOW & API DESIGN. Purpose: Trace request path from client to storage and back; define contracts before internals. Decision Points: (1) Protocol selection - HTTP/REST, gRPC, WebSocket, message queue per boundary. (2) Sync vs async classification - which operations block, which are deferred. (3) Consistency requirements at each boundary - strong vs eventual per hop. (4) Failure handling per hop - what happens when this hop fails? (5) API contract design - request/response shape, error semantics, idempotency, versioning. Rationale: API-first prevents over-building—internal services often expose data no client uses. Failure handling only in code comments is not design yet. Defining APIs before internals forces clarity on what data clients actually need.",
+          "updated": "2026-09-12T04:19:58.653006+00:00",
+          "source": "Viet Bui, Foundry, System Design Space",
+          "confidence": "high"
+        },
+        {
+          "text": "STAGE 5: TRADEOFF ARTICULATION & DESIGN OPTIONS. Purpose: Generate candidate architectures and explicitly articulate competing constraints. Decision Points: (1) Consistency vs availability - CAP theorem, choose based on business requirement. (2) Latency vs throughput - optimize for the bottleneck. (3) Read performance vs write performance - denormalize for reads, normalize for writes. (4) Simplicity vs flexibility - prefer simplicity until concrete driver exists. (5) Cost vs performance - cheapest DB operation is the one you don't make. (6) Technology selection - compare options against Foundation artifacts, record strengths, failure behavior, operational burden, lock-in. Method: State the constraint → identify what violates it → name the tradeoff → assert acceptability with business reason. Rationale: Tradeoffs not articulated are not made consciously—they are hidden risks. A good decision is not 'no downside' but 'known downside, accepted intentionally.'",
+          "updated": "2026-09-12T04:20:01.878471+00:00",
+          "source": "Foundry, Viet Bui, System Design Space, ADR methodology",
+          "confidence": "high"
+        },
+        {
+          "text": "STAGE 6: VALIDATION & MEASUREMENT. Purpose: Treat assumptions as hypotheses; validate before committing. This is where most bad designs could have been corrected cheaply. Decision Points: (1) Hypothesis formulation - write assumptions as testable statements. (2) PoC scope - validate highest-risk unknowns, not rebuild final system. (3) Measurement definition - latency distributions (not averages), throughput, error rates, resource utilization, recovery time. (4) Testing strategy - contract tests, load tests, fault-injection tests, migration tests. (5) Statistical confidence - how sure are we? (6) Change cost - cost of reversing direction if hypothesis fails. Core loop: Hypothesis → Experiment → Measure → Learn → refine hypothesis. Rationale: Before Validation, you have a proposal. After Validation, you have evidence. If measurement is weak, Decision becomes opinion. Systems fail because assumptions are treated as facts.",
+          "updated": "2026-09-12T04:20:07.142164+00:00",
+          "source": "Foundry methodology, NASA SEH 4.0 validation process",
+          "confidence": "high"
+        },
+        {
+          "text": "STAGE 7: DECISION & DELIVERY. Purpose: Commit to architecture using evidence, then translate into running system. Decision Points (Decision): (1) Measured decision - reference concrete findings, not intuition. (2) Trade-off documentation - what are we accepting? (3) Revisit triggers - explicit conditions for re-evaluation (e.g., throughput exceeds 70% peak, p99 breach for 2 cycles, regulatory changes). Decision Points (Delivery): (4) Implementation scope - core path first, optional capabilities deferred, risk-heavy behind feature flags. (5) Rollout strategy - internal canary → percentage rollout → full rollout after SLO guardrails. (6) Migration planning - dual-write windows, read-path cutover, data backfill, consistency checks. (7) Operational readiness - SLOs/alerting, dashboards, runbooks, capacity review cadence, on-call ownership. Rationale: Architecture is not delivered when endpoints respond—it's delivered when operators can run it predictably. Delivery without operational readiness is deferred failure.",
+          "updated": "2026-09-12T04:20:10.829339+00:00",
+          "source": "Foundry, System Design Space, SEBoK lifecycle model",
+          "confidence": "high"
+        },
+        {
+          "text": "CROSS-CUTTING PRINCIPLES & HANDOFF GATES. Stage handoffs force quality questions: Foundation→Design: Did we define the right constraints? Design→Validation: Did we make assumptions testable? Validation→Decision: Do we have evidence, not confidence? Decision→Delivery: Can this be rolled out and operated safely? Key principles: (1) Architecture driven by constraints, not creativity. (2) Measurement more valuable than intuition—intuition generates hypotheses, measurement selects options. (3) Avoid premature scaling—design for expected scale, validate for near-future. (4) Design remains adaptable—explicit decisions, revisit triggers, clear ownership, continuous validation loops. (5) Treat architecture like software—testable, revisable, accountable to production behavior. Common mistakes: jumping to solutions before requirements, over-engineering from start, ignoring failure modes, 'it can be cached' as magic answer, proposing microservices without justification, skipping capacity estimation, not defining consistency requirements.",
+          "updated": "2026-09-12T04:20:18.247897+00:00",
+          "source": "Foundry, Viet Bui, System Design Space, NASA SEH 4.0, SEBoK",
+          "confidence": "high"
+        }
+      ],
+      "updated": "2026-09-12T04:20:18.247904+00:00"
+    },
+    "System Design Skill Update": {
+      "entityType": "Agent Skills",
+      "observations": [
+        {
+          "text": "Updated system-design skill to follow 7-stage workflow: Requirements Clarification, Capacity Estimation, Component Decomposition, Data Flow & API Design, Tradeoff Articulation, Validation & Measurement, Decision & Delivery. Added references/patterns.md and references/decision-points.md. Removed system-design from dev-workflow routing table. Added system-design invocation to initialize-project step 3 (after AGENTS.md, before backlog creation). Output saved as docs/system-design.md.",
+          "updated": "2026-09-12T04:28:59.213118+00:00",
+          "source": "User request, 2026-09-12",
+          "confidence": "high"
+        }
+      ],
+      "updated": "2026-09-12T04:28:59.213138+00:00"
+    },
+    "Dev-Workflow Skill Reduction": {
+      "entityType": "Agent Skills",
+      "observations": [
+        {
+          "text": "Reduced dev-workflow from 21 referenced skills to 11 (48% reduction). Merged: debug+bug-hunter+security-audit+code-quality+review → audit (1 skill, 5 modes). Merged pivot+recover → recover (crash-recovery + pivot modes). Inlined: write-tests, refactor, add-dependency, latest-doc into implement-task/plan-task/rules. Remaining: orient, plan-task, implement-task, record-progress, initialize-project, migrate-state, audit, recover, ideate, ui-ux-workflow, unslop. Routing table reduced from 20+ to 21 entries (some merged, some inlined).",
+          "updated": "2026-09-12T04:37:16.538854+00:00",
+          "source": "User request, 2026-09-12",
+          "confidence": "high"
+        }
+      ],
+      "updated": "2026-09-12T04:37:16.538862+00:00"
+    }
+  },
+  "relations": [
+    {
+      "from": "Job Application Pipeline",
+      "to": "Resume Generation",
+      "type": "builds-on",
+      "updated": null
+    },
+    {
+      "from": "Resume Generation",
+      "to": "Job Application Pipeline",
+      "type": "prerequisite-for",
+      "updated": null
+    },
+    {
+      "from": "Job Application Pipeline",
+      "to": "Generating Tech Resumes",
+      "type": "supersedes",
+      "updated": null
+    },
+    {
+      "from": "Job Application Pipeline",
+      "to": "Interview Intro",
+      "type": "supersedes",
+      "updated": null
+    },
+    {
+      "from": "Generating Tech Resumes",
+      "to": "Job Application Pipeline",
+      "type": "superseded-by",
+      "updated": null
+    },
+    {
+      "from": "Interview Intro",
+      "to": "Job Application Pipeline",
+      "type": "superseded-by",
+      "updated": null
+    },
+    {
+      "from": "Job Application Pipeline",
+      "to": "Interview Intro",
+      "type": "verifies",
+      "updated": null
+    },
+    {
+      "from": "Job Search Strategy",
+      "to": "Tech Job Market",
+      "type": "builds-on",
+      "updated": null
+    },
+    {
+      "from": "Tech Job Market",
+      "to": "Job Search Strategy",
+      "type": "prerequisite-for",
+      "updated": null
+    },
+    {
+      "from": "Job Search Strategy",
+      "to": "Resume Generation",
+      "type": "builds-on",
+      "updated": null
+    },
+    {
+      "from": "Resume Generation",
+      "to": "Job Search Strategy",
+      "type": "prerequisite-for",
+      "updated": null
+    },
+    {
+      "from": "Job Application Pipeline",
+      "to": "Job Search Strategy",
+      "type": "applies-to",
+      "updated": null
+    },
+    {
+      "from": "Job Search Strategy",
+      "to": "Job Application Pipeline",
+      "type": "executed-by",
+      "updated": null
+    },
+    {
+      "from": "Job Leads Pakistan",
+      "to": "Job Search Strategy",
+      "type": "applies-to",
+      "updated": null
+    },
+    {
+      "from": "Job Search Strategy",
+      "to": "Job Leads Pakistan",
+      "type": "informs",
+      "updated": null
+    },
+    {
+      "from": "Job Leads Pakistan",
+      "to": "Tech Job Market",
+      "type": "builds-on",
+      "updated": null
+    },
+    {
+      "from": "Target Companies Pakistan",
+      "to": "Job Leads Pakistan",
+      "type": "builds-on",
+      "updated": null
+    },
+    {
+      "from": "Target Companies Pakistan",
+      "to": "Job Search Strategy",
+      "type": "applies-to",
+      "updated": null
+    },
+    {
+      "from": "Target Companies Pakistan",
+      "to": "Tech Job Market",
+      "type": "builds-on",
+      "updated": null
+    },
+    {
+      "from": "Target Companies Pakistan",
+      "to": "Resume Generation",
+      "type": "informs",
+      "updated": null
+    },
+    {
+      "from": "Automating Agentic Lifecycle",
+      "to": "Agentic Development Lifecycle",
+      "type": "builds-on",
+      "updated": null
+    },
+    {
+      "from": "Agentic Development Lifecycle",
+      "to": "Automating Agentic Lifecycle",
+      "type": "prerequisite-for",
+      "updated": null
+    },
+    {
+      "from": "Agentic Workflow System",
+      "to": "Automating Agentic Lifecycle",
+      "type": "implements",
+      "updated": null
+    },
+    {
+      "from": "Automating Agentic Lifecycle",
+      "to": "Agentic Workflow System",
+      "type": "implemented-by",
+      "updated": null
+    },
+    {
+      "from": "Agentic Development Lifecycle",
+      "to": "Job Application Pipeline",
+      "type": "similar-to",
+      "updated": null
+    },
+    {
+      "from": "Job Application Pipeline",
+      "to": "Agentic Development Lifecycle",
+      "type": "similar-to",
+      "updated": null
+    },
+    {
+      "from": "Vault Operations",
+      "to": "Target Companies Pakistan",
+      "type": "context-for",
+      "updated": null
+    },
+    {
+      "from": "Vault Operations",
+      "to": "Job Search Pipeline",
+      "type": "context-for",
+      "updated": null
+    },
+    {
+      "from": "Islam Nabi Personal Brand",
+      "to": "Portfolio Personal-Branding Patterns",
+      "type": "benchmark-for",
+      "updated": null
+    },
+    {
+      "from": "Islam Nabi Personal Brand",
+      "to": "Usama Mangi Portfolio Audit",
+      "type": "contrasts-with",
+      "updated": null
+    },
+    {
+      "from": "Portfolio Personal-Branding Patterns",
+      "to": "Usama Mangi Portfolio Audit",
+      "type": "applies-to",
+      "updated": null
+    },
+    {
+      "from": "Portfolio Personal-Branding Patterns",
+      "to": "Resume Generation",
+      "type": "builds-on",
+      "updated": null
+    },
+    {
+      "from": "Usama Mangi Portfolio Audit",
+      "to": "Job Application Pipeline",
+      "type": "builds-on",
+      "updated": null
+    },
+    {
+      "from": "Muhammad Shahzeb Personal Brand",
+      "to": "Usama Mangi Portfolio Audit",
+      "type": "contrasts-with",
+      "updated": null
+    },
+    {
+      "from": "Muhammad Shahzeb Personal Brand",
+      "to": "Islam Nabi Personal Brand",
+      "type": "contrasts-with",
+      "updated": null
+    },
+    {
+      "from": "Muhammad Shahzeb Personal Brand",
+      "to": "Portfolio Personal-Branding Patterns",
+      "type": "informs",
+      "updated": null
+    }
+  ],
+  "log": {
+    "last_updated": "2026-09-12T04:37:16.538876+00:00",
+    "recent_changes": [
+      {
+        "action": "add",
+        "entity": "Dev-Workflow Skill Reduction",
+        "type": "Agent Skills",
+        "at": "2026-09-12T04:37:16.538865+00:00"
+      },
+      {
+        "action": "add",
+        "entity": "System Design Skill Update",
+        "type": "Agent Skills",
+        "at": "2026-09-12T04:28:59.213145+00:00"
+      },
+      {
+        "action": "update",
+        "entity": "System Design Process",
+        "append": true,
+        "at": "2026-09-12T04:20:18.247907+00:00"
+      },
+      {
+        "action": "update",
+        "entity": "System Design Process",
+        "append": true,
+        "at": "2026-09-12T04:20:10.829351+00:00"
+      },
+      {
+        "action": "update",
+        "entity": "System Design Process",
+        "append": true,
+        "at": "2026-09-12T04:20:07.142185+00:00"
+      },
+      {
+        "action": "update",
+        "entity": "System Design Process",
+        "append": true,
+        "at": "2026-09-12T04:20:01.878483+00:00"
+      },
+      {
+        "action": "update",
+        "entity": "System Design Process",
+        "append": true,
+        "at": "2026-09-12T04:19:58.653016+00:00"
+      },
+      {
+        "action": "update",
+        "entity": "System Design Process",
+        "append": true,
+        "at": "2026-09-12T04:19:53.422186+00:00"
+      }
+    ]
+  }
+}
