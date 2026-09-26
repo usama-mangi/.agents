@@ -1,34 +1,42 @@
 ---
 name: recover
 description: >
-  Must use when recovery is required after a session crash or mid-implementation termination.
+  Use when session crashed, state is inconsistent, or user wants to change direction (pivot). Replaces pivot and recover skills.
 ---
 
-**Core principle**: Git log > project-backlog.json. If both don't match, git wins.
+**Core principle:** Git log is ground truth. If git and state files disagree, git wins.
 
 ## Rules
-1. NEVER assume what was done. Verify with `git log` and `git diff`. What was committed is truth. What backlog file says is interpretation.
-2. NEVER overwrite state backlog without reading it first. Read current state, read git history, then reconcile. Blind overwriting loses information.
-3. NEVER mark partial work as done. If 3 of 5 steps were completed, record exactly that. Do not mark the task done.
-4. ALWAYS check for uncommitted work. `git status` and `git diff` reveal staged-but-not-committed or unstaged changes that may be valuable.
 
-## Workflow
+1. NEVER assume what was done. Verify with `git log` and `git diff`.
+2. NEVER overwrite state without reading it first.
+3. NEVER mark partial work as done. Record exactly what was completed.
+4. ALWAYS check for uncommitted work (`git status`, `git diff`).
+5. NEVER pivot without recording reasoning. Unrecorded pivots create ghost work.
+6. NEVER abandon tasks without marking them blocked with a reason.
 
-1. If `docs/handoff.md` exists, it is the last recorded snapshot. Note:
-  - What task was being worked on
-  - What steps were planned
-  - What was supposed to happen next
-  Handoff may be absent (it is written only on handoff triggers). Fall back to git log and `python3 ~/.agents/skills/dev-workflow/scripts/backlog.py get --active` for the task state, and `python3 ~/.agents/skills/dev-workflow/scripts/memory.py get --keyword <active-task-id>` for the last decisions.
-2. Run git log --oneline -10. This shows what was ACTUALLY committed. Compare with handoff:
-  - Were commits made that handoff doesn't mention?
-  - Were commits NOT made that handoff says were done?
-3. Run git status. Limit `git diff --stat` and `git diff --cached --stat` to the paths touched by the pending task; do not diff the whole tree when the crash is localized. Look for:
-  - Uncommitted changes (working directory)
-  - Staged but not committed changes
-  - Untracked new files
-  If uncommitted work exists, ask the user whether to commit, stash, or discard it.
-4. Report to user. Summarize:
-  - What git log shows (actual commits)
-  - What state files said vs what was real (discrepancies found)
-  - Current state after reconciliation
-  - Suggested next step
+## Mode: crash-recovery
+
+Triggered by: "session crashed", "what was I doing"
+
+1. If `docs/handoff.md` exists, note: active task, planned steps, next action.
+2. Run `git log --oneline -10`. Compare with handoff state.
+3. Run `git status`. Check for uncommitted, staged-but-not-committed, untracked changes.
+4. If uncommitted work exists, ask user: commit, stash, or discard?
+5. Report: what git shows, what state files said, discrepancies, current state, suggested next step.
+
+## Mode: pivot
+
+Triggered by: "change plan", "pivot", "scrap this"
+
+1. Ask user: what to do differently? why is current approach not working? what does new direction look like?
+2. Review backlog: `python3 ~/.agents/skills/dev-workflow/scripts/backlog.py list`
+   - Which tasks affected? Abandoned? Modified? New?
+3. Update backlog via scripts:
+   - Abandoned: `backlog.py update --id TASK-XX --status blocked --notes "Blocked: <reason>"`
+   - Modified: `backlog.py update --id TASK-XX --title "<new direction>"`
+   - New: `backlog.py add --id TASK-XX --title "<title>" --deps ...`
+4. Record pivot in memory:
+   `python3 ~/.agents/skills/dev-workflow/scripts/memory.py add --key pivot-<date> --text "<reason, abandoned, added, carried over>" --cat decisions`
+5. Create or update plan for new direction.
+6. Summarize: what was abandoned, what is new, what still applies, next step.

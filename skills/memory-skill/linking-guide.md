@@ -40,3 +40,15 @@ If A `builds-on` B, add B `prerequisite-for` A. If A `contrasts-with` B, the rev
 | Standalone (modular arithmetic) | 1-3 |
 
 An entity with zero relations means you missed something. Ten or more means some are redundant or a subtopic should have absorbed them.
+
+## Staleness
+
+Relations and observations can age. `stale --days N` surfaces facts and links older than N days. Career and market topics decay fastest; Mathematics and foundational concepts hold longer. Revisit stale nodes with `check` to confirm they still hold and `update` with fresh sources and confidence. A link that no longer reflects the current state should be removed rather than left as a dead end.
+
+## Verification workflow
+
+After storing new knowledge:
+1. Run `suggest --entity E` to discover latent connections you may have missed.
+2. Run `check --entity E` to surface contradictions with existing observations.
+3. Run `traverse --entity E --depth 2` to review the neighborhood for coherence.
+4. Run `stale --days 30` to flag aging facts for re-verification.
